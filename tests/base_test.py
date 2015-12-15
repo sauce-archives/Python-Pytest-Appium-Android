@@ -35,8 +35,7 @@ def on_platforms(platforms):
             module[name] = new.classobj(name, (base_class,), d)
     return decorator
 
-@on_platforms(browsers)
-class FirstSampleTest(unittest.TestCase):
+class BaseTest(unittest.TestCase):
 
     # setUp runs before each test case
     def setUp(self):
@@ -45,13 +44,7 @@ class FirstSampleTest(unittest.TestCase):
            command_executor="http://%s:%s@ondemand.saucelabs.com:80/wd/hub" % (username, access_key),
            desired_capabilities=self.desired_capabilities)
 
-    # click to make a new note in the app
-    def test_note(self):
-        self.driver.find_element_by_accessibility_id('New note').click()
-        self.driver.find_element_by_class_name('android.widget.EditText').send_keys('Here is a new note from Python')
-        self.driver.find_element_by_accessibility_id('Save').click()
-        notes = self.driver.find_elements_by_class_name('android.widget.TextView')
-        self.assertEqual(notes[2].text,'Here is a new note from Python')
+
 
     # tearDown runs after each test case
     def tearDown(self):
