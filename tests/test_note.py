@@ -8,7 +8,8 @@ class SubTest1(BaseTest):
     @classmethod
     def setup_class(cls):
         BaseTest.setup_class()
-        upload_app(cls.app_path, cls.username, cls.access_key)
+        if cls.upload:
+            upload_app(cls.app_path, cls.username, cls.access_key)
 
         # verify google title
         # click to make a new note in the app
