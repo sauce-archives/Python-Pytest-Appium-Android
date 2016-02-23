@@ -4,6 +4,7 @@ import sys
 import new
 from appium import webdriver
 from sauceclient import SauceClient
+import uuid
 
 browsers = [{
     'appiumVersion': '1.4.16',
@@ -65,14 +66,20 @@ class BaseTest(unittest.TestCase):
             self.desired_capabilities['tunnel-identifier'] = BaseTest.tunnel_id
         if BaseTest.build_tag:
             self.desired_capabilities['build'] = BaseTest.build_tag
-
+        with(open(str(uuid.uuid4()) + '.testlog', 'w')) as outfile:
+            outfile.write("DEBUG: " +
+                          ("http://%s:%s@%s:%s/wd/hub" %
+                           (BaseTest.username,
+                            BaseTest.access_key,
+                            BaseTest.selenium_host,
+                            BaseTest.selenium_port)))
         self.driver = webdriver.Remote(
-                command_executor="http://%s:%s@%s:%s/wd/hub" %
-                                 (BaseTest.username,
-                                  BaseTest.access_key,
-                                  BaseTest.selenium_host,
-                                  BaseTest.selenium_port),
-                desired_capabilities=self.desired_capabilities)
+            command_executor="http://%s:%s@%s:%s/wd/hub" %
+                             (BaseTest.username,
+                              BaseTest.access_key,
+                              BaseTest.selenium_host,
+                              BaseTest.selenium_port),
+            desired_capabilities=self.desired_capabilities)
 
     # tearDown runs after each test case
     def tearDown(self):
