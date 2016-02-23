@@ -111,7 +111,8 @@ class BaseTest(unittest.TestCase):
             cls.upload = True
 
         cls.selenium_port = os.environ.get("SELENIUM_PORT", None)
-        if cls.selenium_port:
+        cls.selenium_port = os.environ.get("SELENIUM_HOST", None)
+        if cls.selenium_port and cls.selenium_host and cls.selenium_host != "ondemand.saucelabs.com":
             cls.selenium_host = "localhost"
         else:
             cls.selenium_host = "ondemand.saucelabs.com"
