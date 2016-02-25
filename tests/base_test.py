@@ -67,12 +67,12 @@ class BaseTest(unittest.TestCase):
             self.desired_capabilities['build'] = BaseTest.build_tag
 
         self.driver = webdriver.Remote(
-                command_executor="http://%s:%s@%s:%s/wd/hub" %
-                                 (BaseTest.username,
-                                  BaseTest.access_key,
-                                  BaseTest.selenium_host,
-                                  BaseTest.selenium_port),
-                desired_capabilities=self.desired_capabilities)
+            command_executor="http://%s:%s@%s:%s/wd/hub" %
+                             (BaseTest.username,
+                              BaseTest.access_key,
+                              BaseTest.selenium_host,
+                              BaseTest.selenium_port),
+            desired_capabilities=self.desired_capabilities)
 
     # tearDown runs after each test case
     def tearDown(self):
@@ -104,7 +104,8 @@ class BaseTest(unittest.TestCase):
             cls.upload = True
 
         cls.selenium_port = os.environ.get("SELENIUM_PORT", None)
-        if cls.selenium_port:
+        cls.selenium_port = os.environ.get("SELENIUM_HOST", None)
+        if cls.selenium_port and cls.selenium_host and cls.selenium_host != "ondemand.saucelabs.com":
             cls.selenium_host = "localhost"
         else:
             cls.selenium_host = "ondemand.saucelabs.com"
