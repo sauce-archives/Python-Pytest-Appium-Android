@@ -6,25 +6,25 @@ from appium import webdriver
 from sauceclient import SauceClient
 
 browsers = [{
-    'appiumVersion': '1.4.16',
+    'appiumVersion': '1.9.1',
     'platformName': 'Android',
     'platformVersion': '4.3',
     'deviceName': 'Android Emulator',
     'name': 'Python Appium Android 4.3 example'
 }, {
-    'appiumVersion': '1.4.16',
+    'appiumVersion': '1.9.1',
     'platformName': 'Android',
     'platformVersion': '5.0',
     'deviceName': 'Android Emulator',
     'name': 'Python Appium Android 5.0 example'
 }, {
-    'appiumVersion': '1.4.16',
+    'appiumVersion': '1.9.1',
     'platformName': 'Android',
     'platformVersion': '5.1',
     'deviceName': 'Android Emulator',
     'name': 'Python Appium Android 5.1 example'
 }, {
-    'appiumVersion': '1.4.16',
+    'appiumVersion': '1.9.1',
     'platformName': 'Android',
     'platformVersion': '5.1',
     'deviceName': 'Android Emulator',
