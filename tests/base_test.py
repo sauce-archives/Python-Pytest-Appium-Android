@@ -8,7 +8,7 @@ from sauceclient import SauceClient
 browsers = [{
     'appiumVersion': '1.9.1',
     'platformName': 'Android',
-    'platformVersion': '4.3',
+    'platformVersion': '4.4',
     'deviceName': 'Android Emulator',
     'name': 'Python Appium Android 4.3 example'
 }, {
